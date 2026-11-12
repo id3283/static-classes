@@ -1,4 +1,54 @@
-package PACKAGE_NAME;
-
 public class NameFormatter {
+
+
+    public static String format(String prefix,
+                                String firstName,
+                                String middleName,
+                                String lastName,
+                                String suffix) {
+        // Input (parameters) validation
+        if (prefix == null) {
+            prefix = "";
+        }
+        if (firstName == null) {
+            firstName = "";
+        }
+        if (middleName == null) {
+            middleName = "";
+        }
+        if (lastName == null) {
+            lastName = "";
+        }
+        if (suffix == null) {
+            suffix = "";
+        }
+
+        // Check required parameters
+        if (lastName.isEmpty()) {
+            throw new IllegalArgumentException("You must provide a last name");
+        }
+        if (firstName.isEmpty()) {
+            throw new IllegalArgumentException("You must provide a last name");
+        }
+
+        // Now build up results
+        String result = "";
+        result += lastName + ", ";
+
+        if (!prefix.isEmpty()) {
+            result += prefix + " ";
+        }
+
+        result += firstName + " ";
+
+        if (!middleName.isEmpty()) {
+            result += middleName;
+        }
+
+        if (!suffix.isEmpty()) {
+            result += ", " + suffix;
+        }
+
+        return result;
+    }
 }
